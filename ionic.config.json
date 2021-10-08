@@ -1,0 +1,8 @@
+{
+  "name": "Moica",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "3e3de94c"
+}
