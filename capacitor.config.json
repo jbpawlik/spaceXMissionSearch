@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "moica",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

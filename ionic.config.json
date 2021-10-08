@@ -1,0 +1,7 @@
+{
+  "name": "moica",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
