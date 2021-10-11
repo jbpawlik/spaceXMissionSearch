@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonItem, IonLabel } from '@ionic/react'
-import { ApolloClient, InMemoryCache, useQuery, gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 const spaceXQuery = gql`
   {
@@ -13,37 +13,24 @@ const spaceXQuery = gql`
   }
 `;
 
-export default function SpaceXCall() {
+export default function SpaceXCall(): JSX.Element {
   const { loading, error, data } = useQuery(spaceXQuery);
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.launches.map(({ id, mission_name, launch_year, details }) => (
+  if (error) return <p>Error:(</p>;
+  const apiResponse = [...data.launches]
+  const sortedResponse = apiResponse.sort((a, b) => a.mission_name.localeCompare(b.mission_name))
+  console.log(sortedResponse)
+  return sortedResponse.map(({ id, mission_name, launch_year, details }) => (
     <IonItem>
-      <IonLabel>
       <div key={id} className='missionDetails'>
         <p>
-          {mission_name}
-          <br/>
-          {launch_year}
+          <IonLabel>
+            {mission_name} - {launch_year}
+          </IonLabel>
           <br/>
           {details}
         </p>
       </div>
-      </IonLabel>
     </IonItem>
   ))
 }
-
-// const client = new ApolloClient({
-//   uri: 'https://api.spacex.land/graphql/',
-//   cache: new InMemoryCache()
-// });
-
-// export default function SpaceXCall() {
-//   return (
-//     <div>
-//       <h2>My first Apollo app 🚀</h2>
-//       <ExchangeRates />    </div>
-//   );
-// }
