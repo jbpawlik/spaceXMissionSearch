@@ -5,7 +5,7 @@
 SpaceX Mission Search combs through the SpaceX database to find missions based on a user search query. The mission search returns several data points like the mission name, ID, year, and a description of the mission. Users can search full or partial words, or leave the search blank to return all missions.
 
 ## Technologies Used
-SpaceX Mission Search was written in plain JavaScript, React.js, TypeScript, and JSON. It uses the Ionic framework to enable cross-platform use. API calls are made with GraphQL. API responses were tested with Postman.
+SpaceX Mission Search was written in plain JavaScript, React.js, TypeScript, and JSON. It uses the Ionic framework to enable cross-platform use. Calls to the [SpaceX API](https://api.spacex.land/graphql) are made with GraphQL using Apollo. API responses were tested with Postman.
 
 ## Setup/Installation
 
