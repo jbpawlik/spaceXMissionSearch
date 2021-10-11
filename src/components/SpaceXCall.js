@@ -1,4 +1,5 @@
 import React from 'react';
+import { IonItem, IonLabel } from '@ionic/react'
 import { ApolloClient, InMemoryCache, useQuery, gql } from "@apollo/client";
 
 const spaceXQuery = gql`
@@ -17,16 +18,20 @@ export default function SpaceXCall() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.launches.map(({ id, missionName, launchYear, details }) => (
-    <div className='missionDetails'>
-      <p>
-        {id}: {missionName}
-        <br/>
-        {launchYear}
-        <br/>
-        {details}
-      </p>
-    </div>
+  return data.launches.map(({ id, mission_name, launch_year, details }) => (
+    <IonItem>
+      <IonLabel>
+      <div key={id} className='missionDetails'>
+        <p>
+          {mission_name}
+          <br/>
+          {launch_year}
+          <br/>
+          {details}
+        </p>
+      </div>
+      </IonLabel>
+    </IonItem>
   ))
 }
 
