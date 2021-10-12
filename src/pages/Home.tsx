@@ -1,33 +1,38 @@
-import { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonSearchbar, IonFooter } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonList, IonSearchbar, IonRow, IonCol,IonGrid } from '@ionic/react';
 import SpaceXCall from '../components/SpaceXCall';
-import './Home.css';
+import '../theme/variables.css';
 
 const Home: React.FC = () => {
   const [searchText, setSearchText] = useState('');
+  // const [apiResponseArray, getAPIResponseArray] = React.useState([]);
+  
+  // const sendAPIResponseToParent = (apiResponse: String[] = []) => {
+  //   getAPIResponseArray(apiResponse)
+  // }
+
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>SpaceX Missions</IonTitle>
-          <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} animated showCancelButton="focus" placeholder="Search missions by name"/>
-          <IonFooter>
-        <IonToolbar>
-          Search Text: {searchText ?? '(none)'}
-        </IonToolbar>
-      </IonFooter>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Test</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
-        <IonList>
-          <SpaceXCall />
-        </IonList>
-      </IonContent>
+    <IonPage class="homePage">
+      <IonGrid>
+        <IonHeader>
+          <IonRow style={{alignItems: 'center'}}>
+            <IonCol size="4"> 
+              <IonTitle>SpaceX <br/> Missions</IonTitle>
+            </IonCol>
+            <IonCol size="8">
+              <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} animated showCancelButton="focus"/>
+            </IonCol>
+          </IonRow>
+        </IonHeader>
+        <IonContent >
+          <IonList>
+            <SpaceXCall
+              // apiResponseArray={apiResponseArray}
+              // sendAPIResponseToParent={sendAPIResponseToParent}
+            />
+          </IonList>
+        </IonContent>
+      </IonGrid>
     </IonPage>
   );
 };

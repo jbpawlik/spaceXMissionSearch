@@ -3,29 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider} from "@apollo/client";
 
 const client = new ApolloClient({
   uri: 'https://api.spacex.land/graphql/',
   cache: new InMemoryCache()
 });
 
-client.query({
-    query: gql`
-    {
-      launches(find: {mission_name: ""}) {
-        id
-        mission_name
-        details
-        launch_year
-      }
-    }
-    
-    `
-  })
-  .then(result => console.log(result));
-
-  
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
