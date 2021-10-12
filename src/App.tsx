@@ -23,7 +23,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => (
-  <IonApp>
+  <IonApp style={{backgroundImage: "url(https://jooinn.com/images/starfield-1.jpg)", backgroundSize: '100%'}}>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/home">
